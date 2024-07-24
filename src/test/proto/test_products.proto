@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+service ProductService {
+  rpc getProducts(Vacio) returns (Products) {}
+  rpc getProduct(ProductId) returns (Product){}
+  rpc createProduct(CreateProduct) returns (Reply){}
+  rpc deleteProduct(ProductId) returns (Reply){}
+  rpc updateProduct(UpdateProduct) returns (Reply) {}
+
+}
+
+message Vacio {}
+
+message Product {
+  int32 id = 1;
+  string descripcion =2;
+
+}
+
+message CreateProduct {
+  int32 id =  1;
+  string descripcion = 2;
+}
+
+message UpdateProduct{
+  int32 idviejo = 1;
+  int32 idnuevo = 2;
+  string Ndescripcion =3;
+}
+
+
+message Reply {
+  string message = 1;
+}
+
+message Products{
+  repeated Product Products =1;
+  string stats =2;
+}
+
+message ProductId {
+  int32 id = 1;
+}
